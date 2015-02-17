@@ -41,7 +41,7 @@ public class MonitorService extends AccessibilityService {
              * below API_18 we use AccessibilityService to detect
              */
 
-            if (Build.VERSION.SDK_INT < 18) {
+            if (Build.VERSION.SDK_INT < 21) {
                 Notification notification = (Notification) event.getParcelableData();
                 List<String> textList = getText(notification);
                 if (null != textList && textList.size() > 0) {
