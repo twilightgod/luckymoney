@@ -10,6 +10,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.PowerManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.RemoteViews;
@@ -59,8 +60,9 @@ public class MonitorService extends AccessibilityService {
             }
         }
 
-        if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
-            AccessibilityNodeInfo nodeInfo = event.getSource();
+        if (eventType == AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED) {
+        //    if (eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+                AccessibilityNodeInfo nodeInfo = event.getSource();
 
             if (null != nodeInfo) {
                 mNodeInfoList.clear();
@@ -114,6 +116,7 @@ public class MonitorService extends AccessibilityService {
             CharSequence text = node.getText();
             if (null != text && text.length() > 0) {
                 String str = text.toString();
+                Log.v("traverse", String.format("traverse %s", str));
                 if (str.contains("领取红包")) {
                     mContainsLucky = true;
                     AccessibilityNodeInfo cellNode = node.getParent().getParent().getParent();

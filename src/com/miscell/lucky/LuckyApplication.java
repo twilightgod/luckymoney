@@ -12,6 +12,6 @@ public class LuckyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        FlurryAgent.init(this, "37T6NSWDQZ28FNJSWYBB");
+        //FlurryAgent.init(this, "37T6NSWDQZ28FNJSWYBB");
     }
 }
